@@ -14,20 +14,32 @@
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
-    "react-redux": "latest",
-    "redux": "latest",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-komposer": "^1.13.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
     "redux-logger": "^2.6.1"
   },
   "devDependencies": {
     "@kadira/storybook": "^1.41.0",
-    "babel-eslint": "^6.1.2",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.5.0",
     "eslint": "^3.1.1",
+    "babel-eslint": "^6.1.2",
     "eslint-plugin-class-property": "^1.0.0",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "autoprefixer": "^6.3.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }
   }
 }
