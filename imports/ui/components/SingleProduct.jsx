@@ -1,6 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Col } from 'react-bootstrap';
+import { store } from '../redux/store.js';
+import {
+  insertToWishList,
+  removeFromWishList,
+  insertToCart,
+  removeFromCart,
+  addToCompare,
+  removeFromCompare
+} from '../redux/actions/index.js';
+
 
 /*
  * It will receive cart items from the cart container as props
@@ -8,6 +18,7 @@ import { Col } from 'react-bootstrap';
  * It will aslo calculate total no of items and their price
  */
  const defaultProps = {
+    id : 0,
     src : '/images/home/product1.jpg',
     name: "Product Name",
     price: 0,
@@ -17,6 +28,7 @@ import { Col } from 'react-bootstrap';
  };
 
  const propTypes = {
+    id : React.PropTypes.number,
     src: React.PropTypes.string,
     name: React.PropTypes.string.isRequired,
     price: React.PropTypes.number.isRequired,
@@ -44,13 +56,22 @@ class SingleProduct extends React.Component{
       });
    }
    addToCart(){
-     console.log("Product ID is.... " + this.props._id);
+    //  console.log("Product ID is.... " + this.props.id);
+     store.dispatch(
+       this.state.addedToCart ? removeFromCart(this.props.id) : insertToCart(this.props.id)
+     );
      this.setState({ addedToCart : !this.state.addedToCart})
    }
    addToWishList(){
+     store.dispatch(
+       this.state.addedToWishList ? removeFromWishList(this.props.id) : insertToWishList(this.props.id)
+     );
      this.setState({ addedToWishList : !this.state.addedToWishList});
    }
    addToCompare(){
+     store.dispatch(
+       this.state.addedToCompare ? removeFromCompare(this.props.id) : addToCompare(this.props.id)
+     );
      this.setState({ addedToCompare : !this.state.addedToCompare})
    }
    render(){

@@ -22,6 +22,7 @@ import SingleProduct  from './SingleProduct';
       return this.getTasks().map((obj) => (
         <SingleProduct
           key = {obj._id}
+          id = {obj._id}
           src = {obj.src}
           name = {obj.name}
           price = {obj.price}
