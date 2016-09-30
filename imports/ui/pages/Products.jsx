@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Products  from '../components/Products';
 
   /*
   * Products Page that will dispay
@@ -14,7 +15,7 @@ class ProductsPage extends React.Component{
   }
 
   render(){
-    return (<div></div>);
+    return (<Products />);
   }
 }
 

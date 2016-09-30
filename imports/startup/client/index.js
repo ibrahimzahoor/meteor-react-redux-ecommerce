@@ -1,6 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
-import { render } from 'react-dom';
 import { Routes } from './Routes.jsx';
 
-Meteor.startup(() => render(<Routes />, document.getElementById('react-root')));
+Meteor.startup(() => ReactDOM.render(<Routes />, document.getElementById('react-root')));

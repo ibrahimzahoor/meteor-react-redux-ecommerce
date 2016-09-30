@@ -17,10 +17,10 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-komposer": "^1.13.1",
-    "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "redux": "^3.6.0",
-    "redux-logger": "^2.6.1"
+    "redux-logger": "^2.6.1",
+    "react-bootstrap": "~0.30.3"
   },
   "devDependencies": {
     "@kadira/storybook": "^1.41.0",
@@ -32,14 +32,5 @@
     "eslint-plugin-class-property": "^1.0.0",
     "eslint-plugin-react": "^5.2.2",
     "autoprefixer": "^6.3.1"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {
-        "browsers": [
-          "last 2 versions"
-        ]
-      }
-    }
   }
 }

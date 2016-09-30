@@ -10,6 +10,8 @@ export class ItemsCounter extends React.Component {
     super(props);
   }
   render(){
-    return ();
+    return (
+    
+    );
   }
 }

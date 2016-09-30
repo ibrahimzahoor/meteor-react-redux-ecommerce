@@ -11,7 +11,7 @@ export const Routes = () => (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute name="index" component={HomePage} />
-    <Route path="/products" component={ProductsPage} />
+      <Route path="/products" component={ProductsPage} />
       <Route path="*" component={NotFoundPage} />
     </Route>
   </Router>
