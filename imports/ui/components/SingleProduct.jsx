@@ -18,7 +18,7 @@ import {
  * It will aslo calculate total no of items and their price
  */
  const defaultProps = {
-    id : 0,
+    id : "",
     src : '/images/home/product1.jpg',
     name: "Product Name",
     price: 0,
@@ -28,7 +28,7 @@ import {
  };
 
  const propTypes = {
-    id : React.PropTypes.number,
+    id : React.PropTypes.string,
     src: React.PropTypes.string,
     name: React.PropTypes.string.isRequired,
     price: React.PropTypes.number.isRequired,
@@ -47,6 +47,13 @@ class SingleProduct extends React.Component{
       this.addToCart = this.addToCart.bind(this);
       this.addToWishList = this.addToWishList.bind(this);
       this.addToCompare = this.addToCompare.bind(this);
+   }
+   componentWillReceiveProps(nextProps){
+    //  this.setState({
+    //     addedToWishList: nextProps.inWish
+    //   });
+      console.log("Props are changed in Single Product" );
+
    }
    componentWillMount(){
      this.setState({
@@ -107,12 +114,12 @@ class SingleProduct extends React.Component{
            <div className="choose">
              <ul className="nav nav-pills nav-justified">
                <li
-                  className={ addedToWishList ? 'active' : ''}
+                  className={ this.props.inWish ? 'active' : ''}
                   onClick={ this.addToWishList} >
 
                   <a>
                     <i className="fa fa-minus-square-o"></i>
-                    { addedToWishList ? 'Remove from wishlist' : "Add to wishlist"}
+                    { this.props.inWish ? 'Remove from wishlist' : "Add to wishlist"}
                   </a>
                 </li>
                <li

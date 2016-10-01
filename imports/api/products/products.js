@@ -2,37 +2,43 @@ import { Mongo } from "meteor/mongo";
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 /*
- *  Products Collection
- *  Store the Products in this collection
+ *  ProductsCollection Collection
+ *  Store the ProductsCollection in this collection
  */
-const Products = new Mongo.Collection('products');
+const ProductsCollection = new Mongo.Collection('products');
 
-// Products.allow({
+// ProductsCollection.allow({
 //   insert: () => false,
 //   update: () => false,
 //   remove: () => false,
 // });
 //
-// Products.deny({
+// ProductsCollection.deny({
 //   insert: () => true,
 //   update: () => true,
 //   remove: () => true,
 // });
 
 /*
- *  Products Schema
+ *  ProductsCollection Schema
  */
-Products.schema = new SimpleSchema({
+ProductsCollection.schema = new SimpleSchema({
   _id: {
     type: String,
     label: "Product ID"
+  },
+  src: {
+    type: String,
+    label: "Product Image",
+    max: 50,
+    defaultValue:"/images/home/product1.jpg"
   },
   name: {
     type: String,
     label: "Product Name",
     max: 50
   },
-  description: {
+  desc: {
     type: String,
     label: "Product Description",
     optional: true,
@@ -50,11 +56,11 @@ Products.schema = new SimpleSchema({
 });
 
 /*
- *  Attaching "Products.schema" to Products Collection
+ *  Attaching "ProductsCollection.schema" to ProductsCollection Collection
  */
-Products.attachSchema(Products.schema);
+ProductsCollection.attachSchema(ProductsCollection.schema);
 
 /*
- *  exporting Products Collection
+ *  exporting ProductsCollection Collection
  */
-export default Products;
+export default ProductsCollection;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Cart } from '../components/Cart';
+import  Cart  from '../components/Cart';
 
 
 /*
@@ -9,12 +9,13 @@ import { Cart } from '../components/Cart';
  * Cart Component
  * Cart Footer
  */
-export class CartPage extends React.Component{
+class CartPage extends React.Component{
   constructor(props){
     super(props);
   }
 
   render(){
-    return ();
+    return (<Cart />);
     }
 }
+export default CartPage;
