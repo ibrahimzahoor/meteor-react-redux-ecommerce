@@ -1,91 +1,49 @@
 import React from 'react';
-import { compose, composeWithTracker } from 'react-komposer';
+import { _ } from 'meteor/underscore';
+import { compose, composeWithTracker, composeAll } from 'react-komposer';
 import ProductsCollection from '../../../api/products/products.js';
 import  Products from '../../components/Products.jsx';
 import { store } from '../../redux/store.js';
 
-// this will get the data from store
-// const composer = ( props, onData ) => {
-//   return store.subscribe(() => {
-//     const {cartItems} = store.getState();
-//     onData(null, {cartItems})
-//   });
-// };
-
 const composerFn1 = ( props, onData ) => {
+
   const subscription = Meteor.subscribe( 'products.list' );
 
   if ( subscription.ready() ) {
-     const products = ProductsCollection.find().fetch();
-    // console.log("Store" , store.getState().wishList);
+    const products = ProductsCollection.find().fetch();
     onData( null, { products } );
   }
 };
 
 const composerFn2 = ( props, onData ) => {
 
-  // const onPropsChange = (props, onData) => {
-  //   onData(null, {time: store.getState().time});
-  //   return store.subscribe(() => {
-  //     const {time} = store.getState();
-  //     onData(null, {time})
-  //   });
-  // };
+  onData(null, { products: props.products });
 
   return store.subscribe(() => {
 
-  console.log("store.subscrib is called");
- //
-//  products.map(product => {
-//    store.getState().wishList.forEach(wishListProductId => {
-//      console.log("product", product);
-//      console.log("wishListProductId", wishListProductId);
- //
-//      if(wishListProductId == product._id._str) {
-//        product = {...product, inWish: true };
-//        console.log("product changed", product);
-//        return product;
-//      }
-//    });
-//    return product;
-//  });
+    console.log("store.subscrib is called");
 
- console.log("products.map(product => {", products);
+    let products = props.products;
+
+    products.map(product => {
+      const wishLish = store.getState().wishList;
+      _.contains(wishLish, product._id._str) ? product.inWish = true : product.inWish = false;
+      return product;
+    });
 
 
- let i = 0 ;
- for (const value of products) {
-   for ( const wishValue of store.getState().wishList){
-     if ( wishValue === value._id._str){
-       console.log("Wish Value Matched" , wishValue);
-       products[i].inWish = true;
-        // {...products, inWish: true }
-     }
-   }
-   i++;
-  //  console.log(value._id._str);
- }
+   console.log("products after modification", products);
+   let productCopy =  [];
+   productCopy = productCopy.concat(products);
+     console.log("productCopy", productCopy);
 
- console.log("products.map(product => {", products);
+   onData( null, { productCopy } );
+ });
+
+};
 
 
- //console.log("Store Subscibed and Products are..." , products);
- // console.log("ID is " , products[0]._id._str);
- // products[0].saad = "hello hello";
- //  let change = Math.random();
-
-// let productJunk =  [];
-// productJunk = productJunk.concat(products);
-//   console.log("productJunk", productJunk);
-
- onData( null, { products } );
-});
-
-
-const Clock = compose(onPropsChange)(Time);
 export default composeAll(
-  composeWithObservable(composerFn1),
-  composeWithTracker(composerFn2)
-)(Time)
-const ProductsContainer = compose( composer )( Products );
-export default ProductsContainer;
+  compose(composerFn2),
+  composeWithTracker(composerFn1)
+)(Products);

@@ -14,8 +14,15 @@ import SingleProduct  from './SingleProduct';
    }
 
    componentWillReceiveProps(nextProps){
-      console.log("Props are changed in products");
+      console.log("Props are changed in products", nextProps);
    }
+
+   shouldComponentUpdate(nextProps, nextState) {
+      console.log("shouldComponentUpdate::nextProps", nextProps);
+      console.log("shouldComponentUpdate::nextState", nextState);
+      return true;
+   }
+
    renderTasks() {
     return this.props.products.map((obj) => (
       <SingleProduct
