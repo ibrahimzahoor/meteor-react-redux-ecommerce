@@ -950,8 +950,23 @@ h2.title {
   font-size: 15px;
   margin-bottom: 25px;
 }
-
 .add-to-cart:hover {
+  background: #FE980F;
+  border: 0 none;
+  border-radius: 0;
+  color: #FFFFFF;
+}
+.add-to-cart-new {
+  background: #FE980F;
+  border: 0 none;
+  border-radius: 0;
+  color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.add-to-cart-new:hover {
   background: #FE980F;
   border: 0 none;
   border-radius: 0;
@@ -1623,6 +1638,7 @@ h2.title {
 #cart_items .cart_info .cart_total_price {
   color: #FE980F;
   font-size: 24px;
+  width: 50px;
 }
 
 .cart_product {

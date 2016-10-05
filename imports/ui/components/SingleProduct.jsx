@@ -64,8 +64,11 @@ class SingleProduct extends React.Component{
    }
    addToCart(){
     //  console.log("Product ID is.... " + this.props.id);
+    var basicObj = {};
+    basicObj.id = this.props.id;
+    basicObj.quantity = 1;
      store.dispatch(
-       this.state.addedToCart ? removeFromCart(this.props.id) : insertToCart(this.props.id)
+       this.state.addedToCart ? removeFromCart(basicObj) : insertToCart(basicObj)
      );
      this.setState({ addedToCart : !this.state.addedToCart})
    }
@@ -104,7 +107,7 @@ class SingleProduct extends React.Component{
                  <p>{ name }</p>
                   <a
                     onClick={ this.addToCart }
-                    className="btn btn-default add-to-cart">
+                    className={ addedToCart ? "btn btn-default add-to-cart-new" : "btn btn-default add-to-cart" }>
                     <i className="fa fa-shopping-cart"></i>
                     { addedToCart ? "Added" : "Add to cart" }
                   </a>
@@ -114,12 +117,12 @@ class SingleProduct extends React.Component{
            <div className="choose">
              <ul className="nav nav-pills nav-justified">
                <li
-                  className={ this.props.inWish ? 'active' : ''}
+                  className={ addedToWishList ? 'active' : ''}
                   onClick={ this.addToWishList} >
 
                   <a>
                     <i className="fa fa-minus-square-o"></i>
-                    { this.props.inWish ? 'Remove from wishlist' : "Add to wishlist"}
+                    { addedToWishList ? 'Remove from wishlist' : "Add to wishlist"}
                   </a>
                 </li>
                <li

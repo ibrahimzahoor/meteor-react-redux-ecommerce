@@ -14,16 +14,16 @@ export const removeFromWishList = ( id = 0 ) => {
   };
 }
 
-export const insertToCart = ( id = 0  ) => {
+export const insertToCart = ( cartItem ) => {
   return {
     type: "ADD_PRODUCT_TO_CART",
-    id
+    cartItem
   };
 }
-export const removeFromCart = ( id = 0 ) => {
+export const removeFromCart = ( cartItem ) => {
   return {
     type: "REMOVE_PRODUCT_FROM_CART",
-    id
+    cartItem
   };
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  Cart  from '../components/Cart';
+import CartContainer  from '../containers/products/CartContainer';
+
 
 
 /*
@@ -15,7 +16,7 @@ class CartPage extends React.Component{
   }
 
   render(){
-    return (<Cart />);
+    return (<CartContainer />);
     }
 }
 export default CartPage;

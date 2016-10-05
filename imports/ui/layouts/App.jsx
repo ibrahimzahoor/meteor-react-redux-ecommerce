@@ -3,6 +3,7 @@ import { Grid, ButtonGroup, Button, DropdownButton, MenuItem } from 'react-boots
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Footer } from '../components/Footer';
+import { Link } from 'react-router';
 
 const App = ({ children }) => (
   <div>
@@ -41,7 +42,7 @@ const App = ({ children }) => (
   				<Row>
   					<div className="col-sm-4">
   						<div className="logo pull-left">
-  							<a href="index.html"><img src="./images/home/logo.png" alt="" /></a>
+  							<Link to="/products"><img src="./images/home/logo.png" alt="" /></Link>
   						</div>
   					</div>
   					<div className="col-sm-8">
@@ -50,7 +51,8 @@ const App = ({ children }) => (
   								<li><a href="#"><i className="fa fa-user"></i> Account</a></li>
   								<li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
   								<li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
-  								<li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>
+  								{/* <li><a href="cart"><i className="fa fa-shopping-cart"></i> Cart</a></li> */}
+  								<li><Link to="/cart"><i className="fa fa-shopping-cart"></i> Cart</Link></li>
   								<li><a href="login.html"><i className="fa fa-lock"></i> Login</a></li>
   							</ul>
   						</div>

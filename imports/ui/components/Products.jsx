@@ -32,6 +32,7 @@ import SingleProduct  from './SingleProduct';
         name = {obj.name}
         price = {obj.unitPrice}
         inWish = {obj.inWish}
+        inCart = {obj.inCart}
         />
     ));
     }
