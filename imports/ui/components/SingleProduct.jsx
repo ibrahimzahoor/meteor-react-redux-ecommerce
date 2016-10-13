@@ -8,7 +8,7 @@ import {
   insertToCart,
   removeFromCart,
   addToCompare,
-  removeFromCompare
+  removeFromCompare,
 } from '../redux/actions/index.js';
 
 
@@ -49,11 +49,7 @@ class SingleProduct extends React.Component{
       this.addToCompare = this.addToCompare.bind(this);
    }
    componentWillReceiveProps(nextProps){
-    //  this.setState({
-    //     addedToWishList: nextProps.inWish
-    //   });
-      console.log("Props are changed in Single Product" );
-
+      // console.log("Props are changed in Single Product" );
    }
    componentWillMount(){
      this.setState({
@@ -63,14 +59,15 @@ class SingleProduct extends React.Component{
       });
    }
    addToCart(){
-    //  console.log("Product ID is.... " + this.props.id);
     var basicObj = {};
     basicObj.id = this.props.id;
     basicObj.quantity = 1;
+    basicObj.price = this.props.price;
+    basicObj.total = this.props.price;
      store.dispatch(
        this.state.addedToCart ? removeFromCart(basicObj) : insertToCart(basicObj)
      );
-     this.setState({ addedToCart : !this.state.addedToCart})
+     this.setState({ addedToCart : !this.state.addedToCart});
    }
    addToWishList(){
      store.dispatch(

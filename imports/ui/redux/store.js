@@ -5,6 +5,6 @@ import createLogger from 'redux-logger';
 const logger = createLogger();
 
 export const store = createStore (
-  reducer,
+   reducer,
    applyMiddleware( logger)
 );

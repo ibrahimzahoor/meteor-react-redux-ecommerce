@@ -6,6 +6,7 @@ import { store } from '../../redux/store.js';
 
 const composer = ( props, onData ) => {
   const subscription = Meteor.subscribe( 'products.list' );
+
   if ( subscription.ready() ) {
         var ids, products;
         if ( store.getState().cartItems.length !== 0){
@@ -28,6 +29,7 @@ const composer = ( props, onData ) => {
           products = ProductsCollection.find({name:"sss"}).fetch();
         }
         onData( null, { products } );
+
     } // subscription ready end
 };
 

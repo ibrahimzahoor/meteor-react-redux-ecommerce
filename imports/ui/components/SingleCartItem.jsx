@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import ReactDOM from 'react-dom';
 import { Col } from 'react-bootstrap';
 import { store } from '../redux/store.js';
@@ -46,10 +46,10 @@ class SingleCartItem extends React.Component{
       this.decQuantity = this.decQuantity.bind(this);
       this.incQuantity = this.incQuantity.bind(this);
       this.handleStore = this.handleStore.bind(this);
-      this.removeFromCart = this.removeFromCart.bind(this);
+      this.update = this.update.bind(this);
    }
    componentWillReceiveProps(nextProps){
-      console.log("Props are changed in Single Cart Item" );
+      // console.log("Props are changed in Single Cart Item" , nextProps );
    }
    componentWillMount(){
      this.setState({
@@ -57,36 +57,38 @@ class SingleCartItem extends React.Component{
       });
    }
    updateQuantity(e) {
-      var qty;
-      if ( e.target.value !== "")
-        qty = parseInt(e.target.value);
-      else
-        qty = 1;
+      var qty =  e.target.value !== "" ? parseInt(e.target.value) : 1 ;
+      var cartObj = this.handleStore();
       this.setState({quantity: qty}, function(){
-        this.handleStore();
+        this.update(cartObj);
       });
     }
     decQuantity(){
-      this.setState({quantity: this.state.quantity === 1 ? 1 : this.state.quantity - 1}  , function(){
-        this.handleStore();
+      var cartObj = this.handleStore();
+      this.setState({quantity: this.state.quantity === 1 ? 1 : this.state.quantity - 1},
+        function(){
+        this.update(cartObj);
       });
     }
     incQuantity(){
-      this.setState({quantity: this.state.quantity + 1} , function(){
-        this.handleStore();
+      var cartObj = this.handleStore();
+      this.setState({quantity: this.state.quantity + 1},
+        function(){
+        this.update(cartObj);
       });
     }
     handleStore(){
       var cartObj = {};
       cartObj.id = this.props.id;
       store.dispatch(removeFromCart(cartObj));
-      cartObj.quantity = this.state.quantity;
-      store.dispatch(insertToCart(cartObj));
+      this.props.calculateTotal(store.getState().cartItemsTotalAmount , store.getState().items); // calling parent function
+      return cartObj;
     }
-    removeFromCart(){
-      var cartObj = {};
-      cartObj.id = this.props.id;
-      store.dispatch(removeFromCart(cartObj));
+    update(cartObj){
+      cartObj.quantity = this.state.quantity;
+      cartObj.total = this.state.quantity * this.props.price;
+      store.dispatch(insertToCart(cartObj));
+      this.props.calculateTotal(store.getState().cartItemsTotalAmount , store.getState().items); // calling parent function
     }
    render(){
       const {
@@ -133,7 +135,7 @@ class SingleCartItem extends React.Component{
           <p className="cart_total_price">${quantity * price}</p>
         </td>
         <td className="cart_delete">
-        	<Link to="/cart" onClick={ this.removeFromCart} className="cart_quantity_delete"><i className="fa fa-times"></i></Link>
+        	<Link to="/cart" onClick={ this.handleStore} className="cart_quantity_delete"><i className="fa fa-times"></i></Link>
         </td>
       </tr>
      );

@@ -9,20 +9,11 @@ import SingleProduct  from './SingleProduct';
  class Products extends React.Component{
    constructor(props){
      super(props);
-     console.log("Products are " , props);
-
    }
 
    componentWillReceiveProps(nextProps){
       console.log("Props are changed in products", nextProps);
    }
-
-   shouldComponentUpdate(nextProps, nextState) {
-      console.log("shouldComponentUpdate::nextProps", nextProps);
-      console.log("shouldComponentUpdate::nextState", nextState);
-      return true;
-   }
-
    renderTasks() {
     return this.props.products.map((obj) => (
       <SingleProduct

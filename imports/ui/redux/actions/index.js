@@ -4,7 +4,7 @@ import {
   insertToCart,
   removeFromCart,
   addToCompare,
-  removeFromCompare
+  removeFromCompare,
 } from './products.js';
 
 
@@ -14,5 +14,5 @@ export {
   insertToCart,
   removeFromCart,
   addToCompare,
-  removeFromCompare
+  removeFromCompare,
 };

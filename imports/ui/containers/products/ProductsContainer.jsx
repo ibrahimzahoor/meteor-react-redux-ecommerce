@@ -18,9 +18,9 @@ const ProductsComposer = (props, onData) => {
               }
             });
           });
-      }
+      } 
       onData(null, {products});
-  } // subscription ready end
+  }
 
 };
 const ProductsContainer = composeWithTracker(ProductsComposer)(Products);
