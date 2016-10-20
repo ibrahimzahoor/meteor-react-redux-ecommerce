@@ -1,6 +1,6 @@
 import React from 'react';
 import SingleCartItem  from './SingleCartItem';
-import { store } from '../redux/store.js';
+import { store } from '../../redux/store.js';
 
 
  class CartItems extends React.Component{

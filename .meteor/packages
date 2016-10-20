@@ -27,11 +27,19 @@ mobile-experience@1.0.4         # Packages for a great mobile UX
 
 # Production
 standard-minifier-js@1.2.0      # JS minifier run for production mode
-standard-minifier-css@1.2.0   # CSS minifier run for production mode
+standard-minifier-css@1.2.0     # CSS minifier run for production mode
 
 # Accounts
 #accounts-password@1.3.0
 
 # Prototyping
-autopublish@1.0.7               # Publish all data to the clients (for prototyping)
-insecure@1.0.7                  # Allow all DB writes from clients (for prototyping)
+#autopublish@1.0.7               # Publish all data to the clients (for prototyping)
+#insecure@1.0.7                  # Allow all DB writes from clients (for prototyping)
+
+# Debug
+meteortoys:allthings						  # Meteor Toys
+#meteorhacks:kadira							  # Monitoring app performance
+#kadira:debug								      # Debug Production app
+
+# Testing
+dburles:factory

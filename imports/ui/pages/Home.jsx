@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProductListContainer from '../containers/products/List.jsx';
+
 
 const HomePage = () => (
-  <div>
-    <p><strong>Error [404]</strong>: { window.location.pathname } does not exist.</p>
-  </div>
+    <ProductListContainer />
 );
 
 export default HomePage;

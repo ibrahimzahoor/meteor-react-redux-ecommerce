@@ -1,28 +1,26 @@
+import faker from 'faker';
 import { Mongo } from "meteor/mongo";
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Factory } from 'meteor/dburles:factory';
 
-/*
- *  ProductsCollection Collection
- *  Store the ProductsCollection in this collection
- */
-const ProductsCollection = new Mongo.Collection('products');
+const Products = new Mongo.Collection('products');
 
-// ProductsCollection.allow({
+// Products.allow({
 //   insert: () => false,
 //   update: () => false,
 //   remove: () => false,
 // });
 //
-// ProductsCollection.deny({
+// Products.deny({
 //   insert: () => true,
 //   update: () => true,
 //   remove: () => true,
 // });
 
 /*
- *  ProductsCollection Schema
+ *  Products Collection Schema
  */
-ProductsCollection.schema = new SimpleSchema({
+Products.schema = new SimpleSchema({
   _id: {
     type: String,
     label: "Product ID"
@@ -44,7 +42,7 @@ ProductsCollection.schema = new SimpleSchema({
     optional: true,
     max: 100
   },
-  unitPrice: {
+  price: {
     type: Number,
     label: "Product Price",
   },
@@ -55,12 +53,14 @@ ProductsCollection.schema = new SimpleSchema({
   },
 });
 
-/*
- *  Attaching "ProductsCollection.schema" to ProductsCollection Collection
- */
-ProductsCollection.attachSchema(ProductsCollection.schema);
+Products.attachSchema(Products.schema);
 
-/*
- *  exporting ProductsCollection Collection
- */
-export default ProductsCollection;
+export default Products;
+
+Factory.define('product', Products, {
+  name: () => faker.commerce.productName(),
+  desc: () => faker.lorem.words(),
+  src: () => faker.image.fashion(),
+  price: () => faker.commerce.price(),
+  available: () => faker.random.boolean(),
+});

@@ -1,7 +1,7 @@
   import React from 'react';
 import ReactDOM from 'react-dom';
 import { Col } from 'react-bootstrap';
-import { store } from '../redux/store.js';
+import { store } from '../../redux/store.js';
 import { Link } from 'react-router';
 
 import {
@@ -11,7 +11,7 @@ import {
   removeFromCart,
   addToCompare,
   removeFromCompare
-} from '../redux/actions/index.js';
+} from '../../redux/actions/index.js';
 
 
 /*

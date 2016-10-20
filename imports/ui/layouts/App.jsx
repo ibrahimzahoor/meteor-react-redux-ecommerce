@@ -1,11 +1,8 @@
 import React from 'react';
-import {Grid, ButtonGroup, Button, DropdownButton, MenuItem} from 'react-bootstrap';
-import {Row} from 'react-bootstrap';
-import {Col} from 'react-bootstrap';
-import {Footer} from '../components/Footer';
-import {Link} from 'react-router';
-import {store} from '../redux/store.js';
-
+import { Link } from 'react-router';
+import { Grid, ButtonGroup, Button, DropdownButton, MenuItem, Row, Col } from 'react-bootstrap';
+import { Footer } from '../components/application/Footer';
+import { store } from '../redux/store.js';
 
 
 class App extends React.Component {
@@ -200,7 +197,9 @@ class App extends React.Component {
             </div>
           </div>
         </header>
+
         {this.props.children}
+
         <Footer/>
       </div>
     );

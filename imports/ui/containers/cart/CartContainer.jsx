@@ -1,6 +1,6 @@
 import { composeWithTracker } from 'react-komposer';
-import ProductsCollection from '../../../api/products/products.js';
-import  CartItems    from '../../components/CartItems.jsx';
+import Products from '../../../api/products/products.js';
+import  CartItems from '../../components/cart/CartItems.jsx';
 import { store } from '../../redux/store.js';
 
 

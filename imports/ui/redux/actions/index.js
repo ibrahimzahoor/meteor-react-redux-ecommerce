@@ -1,8 +1,8 @@
 import {
   insertToWishList,
   removeFromWishList,
-  insertToCart,
-  removeFromCart,
+  insertProductToCart,
+  removeProductFromCart,
   addToCompare,
   removeFromCompare,
 } from './products.js';
@@ -11,8 +11,8 @@ import {
 export {
   insertToWishList,
   removeFromWishList,
-  insertToCart,
-  removeFromCart,
+  insertProductToCart,
+  removeProductFromCart,
   addToCompare,
   removeFromCompare,
 };

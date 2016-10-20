@@ -1,6 +1,13 @@
 import { Meteor } from 'meteor/meteor';
-import ProductsCollection from '../products.js';
+import Products from '../products.js';
 
-Meteor.publish('products.list', function(){
-  return ProductsCollection.find();
+Meteor.publish('products.list', () => {
+  return Products.find({
+    }, {
+      fields: { _id: 1 }
+    });
+});
+
+Meteor.publish('product', (productId) => {
+  return Products.find(productId);
 });
