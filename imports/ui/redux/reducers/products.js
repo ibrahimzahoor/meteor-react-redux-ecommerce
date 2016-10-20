@@ -3,7 +3,9 @@ const initialState = {
   cartItems: [],
   compareList: [],
   items:0,
-  cartItemsTotalAmount:0
+  cartItemsTotalAmount:0,
+  category : {Id : 0 , price: 0 , brand : "none" , subIds : [] },
+  pageNumber : 1,
 };
 
 export const reducer =  ( state = initialState , action ) => {
@@ -44,6 +46,14 @@ export const reducer =  ( state = initialState , action ) => {
       case "REMOVE_PRODUCT_FROM_COMPARE":
         var id = ObjectId(action.id);
         state = { ...state, compareList: state.compareList.filter( (val) => val._str !== id._str )};
+        break;
+      case "HANDLE_CATEGORY":
+        state = { ...state, pageNumber: 1};
+        state = { ...state, category: action.cat};
+        break;
+      case "UPDATE_PAGE":
+        state = { ...state, pageNumber: action.page};
+
         break;
     }
     return state;

@@ -13,7 +13,7 @@ import {
   removeFromCompare
 } from '../redux/actions/index.js';
 
-
+ 
 /*
  * It will receive cart items from the cart container as props
  * Then it will display cart list using map function

@@ -1,6 +1,9 @@
 import React from 'react';
 import SingleCartItem  from './SingleCartItem';
 import { store } from '../redux/store.js';
+// import { connect } from 'react-redux';
+
+
 
 
  class CartItems extends React.Component{
@@ -12,6 +15,7 @@ import { store } from '../redux/store.js';
      };
      this.calculateTotal = this.calculateTotal.bind(this);
    }
+
    renderTasks() {
 
      return this.props.products.map((obj) => (
@@ -50,6 +54,7 @@ import { store } from '../redux/store.js';
       });
     }
 
+
    render(){
      var setWidth = {
        width:"10px"
@@ -77,7 +82,10 @@ import { store } from '../redux/store.js';
                </thead>
                <tbody>
                 {this.renderTasks()}
-                {this.state.itemsAddedToCart ? <tr>
+                {
+                  this.state.itemsAddedToCart
+                  ?
+                  <tr>
                       <td colSpan={4}>&nbsp;</td>
                       <td  colSpan={2}>
                         <table className="table table-condensed total-result">
@@ -99,7 +107,15 @@ import { store } from '../redux/store.js';
                           </tr>
                         </tbody></table>
                       </td>
-                    </tr>: <tr><td><h5>No Items have been added to the cart</h5></td></tr>}
+                    </tr>
+                    :
+                    <tr>
+                      <td>
+                        <h5>No Items have been added to the cart
+                        </h5>
+                      </td>
+                    </tr>
+                  }
 
                </tbody>
              </table>
@@ -109,4 +125,6 @@ import { store } from '../redux/store.js';
      );
    }
  }
+ // const mapStateToProps = state => ({total:state.cartItemsTotalAmount});
+ // export default connect(mapStateToProps)(CartItems);
  export default CartItems;

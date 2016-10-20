@@ -5,6 +5,8 @@ import {
   removeFromCart,
   addToCompare,
   removeFromCompare,
+  saveCategory,
+  updatePageNumber,
 } from './products.js';
 
 
@@ -15,4 +17,6 @@ export {
   removeFromCart,
   addToCompare,
   removeFromCompare,
+  saveCategory,
+  updatePageNumber,
 };

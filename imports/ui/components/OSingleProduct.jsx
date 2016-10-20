@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Col } from 'react-bootstrap';
-import { ButtonToolbar } from 'react-bootstrap';
-import { ButtonGroup } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { store } from '../redux/store.js';
 import {
   insertToWishList,
@@ -27,8 +24,7 @@ import {
     price: 0,
     inCart: false,
     inWish: false,
-    inCompare: false,
-    catId : 0
+    inCompare: false
  };
 
  const propTypes = {
@@ -38,8 +34,7 @@ import {
     price: React.PropTypes.number.isRequired,
     inCart: React.PropTypes.bool,
     inWish: React.PropTypes.bool,
-    inCompare: React.PropTypes.bool,
-    catId : React.PropTypes.number
+    inCompare: React.PropTypes.bool
  };
 class SingleProduct extends React.Component{
    constructor(props){
@@ -53,7 +48,10 @@ class SingleProduct extends React.Component{
       this.addToWishList = this.addToWishList.bind(this);
       this.addToCompare = this.addToCompare.bind(this);
    }
-
+   
+   componentWillReceiveProps(nextProps){
+      // console.log("Props are changed in Single Product" );
+   }
    componentWillMount(){
      this.setState({
         addedToCompare: this.props.inCompare,
@@ -84,9 +82,6 @@ class SingleProduct extends React.Component{
      );
      this.setState({ addedToCompare : !this.state.addedToCompare})
    }
-  //  variant(){
-  //
-  //  }
    render(){
       const {
         addedToWishList,
@@ -116,25 +111,6 @@ class SingleProduct extends React.Component{
                   </a>
                </div>
            </div>
-
-{/*
-
-           { addedToCart ? <ButtonToolbar>
-              <ButtonGroup   bsSize="xsmall">
-                <Button bsStyle="warning">Small</Button>
-                <Button bsStyle="warning" disabled>Medium</Button>
-                <Button bsStyle="warning">Large</Button>
-              </ButtonGroup>
-              <ButtonGroup className="pull-right"  bsSize="xsmall">
-                <Button bsStyle="warning" active>Blue</Button>
-                <Button bsStyle="warning">Red</Button>
-                <Button bsStyle="warning">Orange</Button>
-              </ButtonGroup>
-            </ButtonToolbar> : <div></div>}
- */}
-
-
-
 
            <div className="choose">
              <ul className="nav nav-pills nav-justified">

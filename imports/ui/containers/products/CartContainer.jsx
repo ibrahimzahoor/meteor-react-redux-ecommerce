@@ -2,7 +2,7 @@ import { composeWithTracker } from 'react-komposer';
 import ProductsCollection from '../../../api/products/products.js';
 import  CartItems    from '../../components/CartItems.jsx';
 import { store } from '../../redux/store.js';
-
+// import { connect } from 'react-redux';
 
 const composer = ( props, onData ) => {
   const subscription = Meteor.subscribe( 'products.list' );
@@ -28,10 +28,12 @@ const composer = ( props, onData ) => {
         else {
           products = ProductsCollection.find({name:"sss"}).fetch();
         }
-        onData( null, { products } );
+        onData( null, { products  } );
 
     } // subscription ready end
 };
 
 const CartContainer = composeWithTracker( composer )( CartItems );
 export default CartContainer;
+// const mapStateToProps = state => ({total:state.cartItemsTotalAmount});
+// export default connect(mapStateToProps)(CartContainer);
