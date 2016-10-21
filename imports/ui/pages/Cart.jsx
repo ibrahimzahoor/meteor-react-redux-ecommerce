@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CartContainer  from '../containers/cart/CartContainer';
+import CartItemListContainer  from '../containers/cart/ItemList';
 
 class CartPage extends React.Component {
     constructor(props){
@@ -8,7 +8,9 @@ class CartPage extends React.Component {
     }
 
     render() {
-        return (<CartContainer />);
+        return (
+            <CartItemListContainer />
+        );
     }
 }
 

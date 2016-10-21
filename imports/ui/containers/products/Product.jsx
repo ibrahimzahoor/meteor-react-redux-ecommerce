@@ -10,21 +10,19 @@ const productContainerComposer = (props, onData) => {
 
   let product = null;
   const subscription = Meteor.subscribe('product', props.productId);
+  const cartItems = store.getState().cart.items.map(item => item.productId);
 
   if (subscription.ready()) {
     product = Products.findOne(props.productId);
-    onData(null, { product });
+    onData(null, { product, inCart: _.contains(cartItems, props.productId) });
   }
 
   store.subscribe(() => {
-
     const cartItems = store.getState().cart.items.map(item => item.productId);
-
     onData( null, { product, inCart: _.contains(cartItems, props.productId) } );
   });
-
-  return () => console.log('ProductContainer::Container disposed!');
 };
+
 
 const ProductContainer = composeWithTracker(productContainerComposer)(Product);
 export default ProductContainer;

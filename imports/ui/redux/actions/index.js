@@ -5,6 +5,9 @@ import {
   removeProductFromCart,
   addToCompare,
   removeFromCompare,
+  incQuantity,
+  decQuantity,
+  updateQuantity,
 } from './products.js';
 
 
@@ -15,4 +18,7 @@ export {
   removeProductFromCart,
   addToCompare,
   removeFromCompare,
+  incQuantity,
+  decQuantity,
+  updateQuantity,
 };

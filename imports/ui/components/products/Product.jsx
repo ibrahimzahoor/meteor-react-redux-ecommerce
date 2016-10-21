@@ -53,7 +53,7 @@ class Product extends React.Component{
    }
 
    addToCart(){
-    store.dispatch(insertProductToCart(this.props.productId));
+    store.dispatch(insertProductToCart(this.props.productId ,  this.props.product.price));
    }
 
    removeFromCart(){

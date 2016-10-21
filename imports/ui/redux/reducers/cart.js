@@ -11,7 +11,8 @@ const cartReducer = (state = initialState, action) => {
               ...state.items,
               {
                 productId: action.productId,
-                quantity: 1
+                quantity: 1,
+                price:action.price,
               }
           ]
       };
@@ -20,6 +21,36 @@ const cartReducer = (state = initialState, action) => {
       return {
           ...state,
           items: state.items.filter(item => item.productId !== action.productId)
+      };
+    case "INC_QUANTITY":
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if(item.productId === action.productId) {
+            item.quantity++;
+          }
+          return item;
+        })
+      };
+    case "DEC_QUANTITY":
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if(item.productId === action.productId) {
+            item.quantity--;
+          }
+          return item;
+        })
+      };
+    case "CART_CHANGE_ITEM_QUANTITY":
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if(item.productId === action.productId) {
+            item.quantity = action.quantity;
+          }
+          return item;
+        })
       };
 
     default:

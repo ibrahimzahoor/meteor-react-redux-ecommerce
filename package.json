@@ -10,7 +10,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings settings.json"
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
@@ -21,7 +21,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.6.1",
     "react-bootstrap": "~0.30.5",
-    "react-router-bootstrap": "~0.23.1"
+    "react-router-bootstrap": "~0.23.1",
+    "react-stripe-checkout": "~2.2.5"
   },
   "devDependencies": {
     "@kadira/storybook": "^1.41.0",

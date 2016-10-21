@@ -17,7 +17,13 @@ class App extends React.Component {
   }
   render() {
     store.subscribe(() => {
-        this.setState({counter: store.getState().items});
+      let items = 0;
+      const cartItems = store.getState().cart.items ;
+      if (cartItems.length !== 0) {
+        const itemsSubTotal = cartItems.map(item => item.quantity );
+        items = _.reduce(itemsSubTotal, (memo, num) => memo + num);
+      }
+        this.setState({counter: items});
     });
     var setWidthOfCartIcon = {
       width:"100px"
@@ -89,7 +95,7 @@ class App extends React.Component {
               <Row>
                 <div className="col-sm-4">
                   <div className="logo pull-left">
-                    <Link to="/products"><img src="./images/home/logo.png" alt=""/></Link>
+                    <Link to="/"><img src="./images/home/logo.png" alt=""/></Link>
                   </div>
                 </div>
                 <div className="col-sm-8">
