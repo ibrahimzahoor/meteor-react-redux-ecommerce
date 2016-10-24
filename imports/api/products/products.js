@@ -1,7 +1,9 @@
-import faker from 'faker';
+import ChanceJS from 'chance';
 import { Mongo } from "meteor/mongo";
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Factory } from 'meteor/dburles:factory';
+
+const Chance = new ChanceJS();
 
 const Products = new Mongo.Collection('products');
 
@@ -28,7 +30,6 @@ Products.schema = new SimpleSchema({
   src: {
     type: String,
     label: "Product Image",
-    max: 50,
     defaultValue:"/images/home/product1.jpg"
   },
   name: {
@@ -58,9 +59,9 @@ Products.attachSchema(Products.schema);
 export default Products;
 
 Factory.define('product', Products, {
-  name: () => faker.commerce.productName(),
-  desc: () => faker.lorem.words(),
-  src: () => faker.image.fashion(),
-  price: () => faker.commerce.price(),
-  available: () => faker.random.boolean(),
+  name: () => Chance.string({pool: 'abcdefghijklmnopqrstuv' , length : 20}),
+  desc: () => "",
+  src: () => "",
+  price: () => Chance.integer({min:1000 ,max:10000}),
+  available: () => true,
 });

@@ -120,6 +120,6 @@ class CartItem extends React.Component{
    }
  }
 
- // SingleCartItem.defaultProps = defaultProps ;
- // SingleCartItem.propTypes = propTypes ;
+ CartItem.defaultProps = defaultProps ;
+ CartItem.propTypes = propTypes ;
  export default CartItem;

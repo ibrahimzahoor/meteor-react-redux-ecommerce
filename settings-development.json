@@ -1,0 +1,34 @@
+{
+  "public": {
+    "plans": [
+      {
+        "_id": 1,
+        "name": "Full Torso Apparition Removal",
+        "amount": {
+          "cents": 300000,
+          "usd": "$3,000"
+        }
+      },
+      {
+        "_id": 2,
+        "name": "Free-Floating Repeater Removal",
+        "amount": {
+          "cents": 425000,
+          "usd": "$4,250"
+        }
+      },
+      {
+        "_id": 3,
+        "name": "Full Roaming Vapor Removal",
+        "amount": {
+          "cents": 500000,
+          "usd": "$5,000"
+        }
+      }
+    ],
+    "stripe": "pk_test_Y8ZjK3gCLFuCm93Q41VP0TcT"
+  },
+  "private": {
+    "stripe": "sk_test_8iBBOPMikXIvcE2HZ7Lk1pW3"
+  }
+}
