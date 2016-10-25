@@ -8,6 +8,9 @@ import {
   incQuantity,
   decQuantity,
   updateQuantity,
+  addIdToCategory,
+  addPriceRangeToCategory,
+  setQuery,
 } from './products.js';
 
 
@@ -21,4 +24,7 @@ export {
   incQuantity,
   decQuantity,
   updateQuantity,
+  addIdToCategory,
+  addPriceRangeToCategory,
+  setQuery,
 };

@@ -9,8 +9,6 @@ class Total extends React.Component {
     this.handlePayment = this.handlePayment.bind(this);
   }
   handlePayment(event, val) {
-    this.setState({selectedService: true});
-    this.setState({processing: true});
     const SELF = this;
     let checkout = StripeCheckout.configure({
       key: Meteor.settings.public.stripe,
@@ -36,7 +34,7 @@ class Total extends React.Component {
         SELF.setState({processing: false});
       }
     });
-    checkout.open({name: 'Ghostbusting Service', description: "saad", amount: val*100, bitcoin: false});
+    checkout.open({name: 'QShop', description: "Meteor / React / Redux", amount: val*100, bitcoin: false});
 
   }
   render() {

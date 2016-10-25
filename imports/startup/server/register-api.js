@@ -1,5 +1,7 @@
 import '../../api/products/server/publications.js';
+import '../../api/categories/server/publications.js';
 import '../../api/products/products.js';
+import '../../api/categories/categories.js';
 
 import '../../api/stripe/methods';
 

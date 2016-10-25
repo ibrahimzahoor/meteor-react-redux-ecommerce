@@ -9,6 +9,8 @@ import {
   removeProductFromCart,
   addToCompare,
   removeFromCompare,
+  addIdToCategory,
+  addPriceRangeToCategory,
 } from '../../redux/actions/index.js';
 
 const defaultProps = {
@@ -54,6 +56,8 @@ class Product extends React.Component{
 
    addToCart(){
     store.dispatch(insertProductToCart(this.props.productId ,  this.props.product.price));
+    // store.dispatch(addIdToCategory(this.props.productId));
+    // store.dispatch(addPriceRangeToCategory(this.props.product.price));
    }
 
    removeFromCart(){

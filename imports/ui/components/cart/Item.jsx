@@ -47,7 +47,6 @@ class CartItem extends React.Component{
       this.decQuantity = this.decQuantity.bind(this);
       this.incQuantity = this.incQuantity.bind(this);
       this.deleteItem = this.deleteItem.bind(this);
-      console.log("Props received in SingleCartItem components are " , props);
    }
    componentWillReceiveProps(nextProps){
       // console.log("Props are changed in Single Cart Item" , nextProps );

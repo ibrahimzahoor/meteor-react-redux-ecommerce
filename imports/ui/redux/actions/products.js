@@ -60,3 +60,22 @@ export const updateQuantity = ( productId , quantity ) => {
     quantity
   };
 }
+export const addIdToCategory = ( catId  ) => {
+  return {
+    type: "ADD_PRODUCT_ID_TO_CATEGORY",
+    catId,
+  };
+}
+export const addPriceRangeToCategory = ( min , max  ) => {
+  return {
+    type: "ADD_PRICE_RANGE_TO_CATGORY",
+    min,
+    max,
+  };
+}
+export const setQuery = ( query  ) => {
+  return {
+    type: "SET_QUERY",
+    query,
+  };
+}
