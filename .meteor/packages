@@ -3,7 +3,7 @@ meteor-base@1.0.4               # Packages every Meteor app needs to have
 tracker@1.1.1-rc.3                   # Meteor's client-side reactive programming library
 es5-shim@4.6.15-rc.3                 # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.9-rc.3                # Enable ECMAScript2015+ syntax in app code
-reactive-var@1.0.11-rc.3             # Reactive variable for tracker
+reactive-var             # Reactive variable for tracker
 shell-server@0.2.1              # Server-side component of the `meteor shell` command
 
 # Standard Libraries

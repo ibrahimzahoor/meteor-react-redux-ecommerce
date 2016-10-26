@@ -18,7 +18,7 @@ class SubCategory extends React.Component {
     const {name} = this.props;
     return (
       <li onClick={this.dispatcher}>
-        <Link  >{name}</Link>
+        <Link>{name}</Link>
       </li>
     );
   }

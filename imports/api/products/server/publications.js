@@ -9,7 +9,7 @@ Meteor.publish('products.list', () => {
 });
 Meteor.publish('products.list.with.catId', (Id) => {
   if (!!Id){
-
+    console.log("Id found");
     return Products.find({
     catId: Id
     }, {
@@ -17,6 +17,7 @@ Meteor.publish('products.list.with.catId', (Id) => {
     });
   }
   else {
+    console.log("Id Not Found");
     return Products.find({
       }, {
         fields: { _id: 1 }
