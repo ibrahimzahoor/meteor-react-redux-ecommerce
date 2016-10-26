@@ -1,54 +1,38 @@
 import React from 'react';
-import {Meteor} from 'meteor/meteor';
-import {ReactiveVar} from 'meteor/reactive-var';
-import {_} from 'meteor/underscore';
-import {compose, composeWithTracker} from 'react-komposer';
+import { compose, composeWithTracker } from 'react-komposer';
+import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { _ } from 'meteor/underscore';
+import { store } from '../../redux/store.js';
 import Products from '../../../api/products/products.js';
 import ProductList from '../../components/products/List.jsx';
-import {store} from '../../redux/store.js';
-import {Tracker} from 'meteor/tracker';
 
 const onPropsChangeTracker = (props, onData) => {
+
   let subscription;
+  let state = store.getState().category;
+  let catId = new ReactiveVar(state.catId);
 
-  let catId = new ReactiveVar();
-  catId.set(0);
-
-  console.log("catId", catId);
+  if(subscription) {
+    subscription.stop();
+  }
 
   subscription = Meteor.subscribe('products.list.with.catId', catId.get());
 
-  // console.log("sub", subscription);
-  // console.log("products here", Products.find().fetch());
-
   if(subscription.ready()) {
-    console.log("subscription ready called");
-    const productIds = Products.find().fetch().map(product => product._id);
+    let productIds = Products.find().fetch().map(product => product._id);
     onData(null, { productIds });
   }
-  //
-  // store.subscribe(() => {
-  //   const state = store.getState().category;
-  //   // subscription.stop();
-  //   catId.set(state.catId);
-  //   console.log("State is " , state);
-  //   // subscription = Meteor.subscribe('products.list.with.catId' , state.catId);
-  //
-  //   // Tracker.autorun(function(){
-  //   //   console.log("subscription.stop", subscription.stop());
-  //   //   console.log("products here", Products.find().fetch());
-  //   //   // subscription = Meteor.subscribe('products.list.with.catId' , state.catId);
-  //   // });
-  //
-  //   // if (subscription.ready()) {
-  //     // console.log("products here", Products.find().fetch());
-  //     // const productIds = Products.find( { catId: state.catId }).fetch().map(product => product._id);
-  //     // console.log("Product ids with the given category " , productIds);
-  //     //   onData(null, { productIds });
-  //   // }
-  // });
+  else {
+    onData(null, { loading: true });
+  }
+
+  store.subscribe(() => {
+    console.log("store.subscribe called");
+    catId.set(store.getState().category.catId);
+  });
 };
 
 const ProductListContainer = composeWithTracker(onPropsChangeTracker)(ProductList);
-
 export default ProductListContainer;

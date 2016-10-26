@@ -7,7 +7,7 @@ Meteor.publish('products.list', () => {
       fields: { _id: 1 }
     });
 });
-Meteor.publish('products.list.with.catId', (Id) => {
+Meteor.publish('products.list.with.catId', (Id ) => {
   if (!!Id){
     console.log("Id found");
     return Products.find({
