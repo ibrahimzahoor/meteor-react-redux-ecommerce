@@ -53,7 +53,7 @@ class SingleCategory extends React.Component {
       <div className="panel panel-default" >
         <div className="panel-heading">
           <h4 onClick={this.dispatcher} className="panel-title">
-            <Link to="/products"   onMouseOver={this.handleSubCat}>{name}</Link>
+            <Link to="/"   onMouseOver={this.handleSubCat}>{name}</Link>
           </h4>
         </div>
         { this.state.sub ? this.printSubCategories() : <div></div>}

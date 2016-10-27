@@ -12,14 +12,14 @@ class SubCategory extends React.Component {
     this.dispatcher = this.dispatcher.bind(this);
   }
   dispatcher(){
-    store.dispatch(addIdToCategory(this.props.catId))
+    store.dispatch(addIdToCategory(this.props.catId));
   }
   render() {
     const {name} = this.props;
     return (
-      <li onClick={this.dispatcher}>
-        <Link>{name}</Link>
-      </li>
+        <li className="" onClick={this.dispatcher}>
+         <Link>{name}</Link>
+       </li>
     );
   }
 }

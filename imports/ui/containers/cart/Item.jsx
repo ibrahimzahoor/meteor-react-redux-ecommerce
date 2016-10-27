@@ -7,6 +7,7 @@ import CartItem from '../../components/cart/Item.jsx';
 import { store } from '../../redux/store.js';
 
 const composer = (props, onData) => {
+  console.log("Cart Item container called ");
 
   let product = null;
   const subscription = Meteor.subscribe('product', props.productId);
